@@ -4,7 +4,12 @@ import Navbar from "./Navbar/Navbar.tsx";
 function App() {
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <main>
+        <b>Hello World</b>
+      </main>
     </div>
   );
 }

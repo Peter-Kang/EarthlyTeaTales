@@ -1,13 +1,16 @@
-const navigation = {
-  brand: { name: "Navbar", to: "/" },
-  links: [
-    { name: "Teas", to: "/" },
-    { name: "Notes", to: "/notes" },
-  ],
-};
+import "./Navbar.css";
+import Logo from "./components/Logo.tsx";
 
 const Navbar = () => {
-  return <div></div>;
+  return (
+    <ul>
+      <li>
+        <a>
+          <Logo></Logo>
+        </a>
+      </li>
+    </ul>
+  );
 };
 
 export default Navbar;

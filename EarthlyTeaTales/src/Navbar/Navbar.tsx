@@ -3,9 +3,9 @@ import Logo from "./components/Logo.tsx";
 
 const Navbar = () => {
   return (
-    <ul>
-      <li>
-        <a>
+    <ul className="navbar">
+      <li className="navbar-item">
+        <a className="navbar-logo">
           <Logo></Logo>
         </a>
       </li>

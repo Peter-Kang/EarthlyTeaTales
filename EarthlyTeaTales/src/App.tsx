@@ -5,7 +5,9 @@ import TeaLoadOut from "./Page/TeaLoadOut/TeaLoadOut.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 //Pages
 import Home from "./Page/Home/Home.tsx";
-import Login from "./Page/Login/Login";
+import Login from "./Page/Login/Login.tsx";
+import Registration from "./Page/Registration/Registration.tsx";
+
 //Hooks
 import { useEffect, useState } from "react";
 
@@ -34,6 +36,9 @@ function App() {
               path="/login"
               element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
             />
+            
+            <Route path="/registration" element={<Registration setLoggedIn={setLoggedIn} setEmail={setEmail}/>} />
+
           </Routes>
         </BrowserRouter>
       </div>

@@ -1,16 +1,21 @@
-ul {
+/*Full nav bar*/
+.navbar {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  color: white;
 }
 
-li {
+/* List Items of navbar */
+.navbar-item {
   float: left;
+  margin: auto;
 }
 
-li a {
+/* List items of navbar logo */
+.navbar-logo {
   display: block;
   color: white;
   text-align: center;
@@ -18,6 +23,7 @@ li a {
   text-decoration: none;
 }
 
-li a:hover {
+/*Hovering anchor items*/
+.navbar-item a:hover {
   background-color: #111;
 }

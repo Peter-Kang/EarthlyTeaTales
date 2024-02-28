@@ -1,16 +1,15 @@
 import "./App.css";
 import Navbar from "./Navbar/Navbar.tsx";
+import TeaLoadOut from "./Page/TeaLoadOut/TeaLoadOut.tsx"
 
 function App() {
   return (
-    <div className="App">
+    <main>
       <header>
         <Navbar></Navbar>
+        <TeaLoadOut></TeaLoadOut>
       </header>
-      <main>
-        <b>Hello World</b>
-      </main>
-    </div>
+    </main>
   );
 }
 

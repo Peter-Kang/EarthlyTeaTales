@@ -1,6 +1,6 @@
 ﻿namespace DataAccessLayer
 {
-    public class Class1
+    public class SQLDataAccess
     {
 
     }

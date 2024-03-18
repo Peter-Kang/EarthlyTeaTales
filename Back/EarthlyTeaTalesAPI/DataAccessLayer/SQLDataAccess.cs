@@ -1,7 +1,22 @@
-﻿namespace DataAccessLayer
+﻿using Npgsql;
+
+namespace DataAccessLayer
 {
     public class SQLDataAccess
     {
+        private const string  m_CONNECTION_STRING = "";
+
+        protected NpgsqlConnection m_SQLConnection { get; set; }
+
+        public SQLDataAccess()
+        {
+            m_SQLConnection = new NpgsqlConnection(m_CONNECTION_STRING);
+        }
+
+        public SQLDataAccess(string argsAlternative)
+        {
+            m_SQLConnection = new NpgsqlConnection(argsAlternative);
+        }
 
     }
 }

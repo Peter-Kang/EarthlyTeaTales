@@ -3,6 +3,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Identity;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using EarthlyTeaTalesAPI.Services;
+using EarthlyTeaTalesAPI.Models;
+using System.Text.Json.Serialization;
+using EarthlyTeaTalesAPI.Repository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +52,59 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 // make another project to handle db
 //builder.Services.AddDbContext<ApplicationDbContext>(opt => opt.UseNpgsql("Host=localhost;Database=postgres;Username=postgres;Password=devpass"));
 
+// Register our TokenService dependency
+builder.Services.AddScoped<TokenService, TokenService>();
+
+// Support string to enum conversions
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
+
+// Specify identity requirements
+// Must be added before .AddAuthentication otherwise a 404 is thrown on authorized endpoints
+builder.Services
+.AddIdentity<ApplicationUser, IdentityRole>(options =>
+    {
+        options.SignIn.RequireConfirmedAccount = false;
+        options.User.RequireUniqueEmail = true;
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 6;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+    })
+    .AddRoles<IdentityRole>()
+    .AddUserStore<EarthlyTeaTalesUserStore>();//Add custom user store
+//.AddEntityFrameworkStores<ApplicationDbContext>();
+
+// These will eventually be moved to a secrets file, but for alpha development appsettings is fine
+var validIssuer = builder.Configuration.GetValue<string>("JwtTokenSettings:ValidIssuer");
+var validAudience = builder.Configuration.GetValue<string>("JwtTokenSettings:ValidAudience");
+var symmetricSecurityKey = builder.Configuration.GetValue<string>("JwtTokenSettings:SymmetricSecurityKey");
+
+builder.Services.AddAuthentication(options => {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(options =>
+    {
+        options.IncludeErrorDetails = true;
+        options.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ClockSkew = TimeSpan.Zero,
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = validIssuer,
+            ValidAudience = validAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(symmetricSecurityKey)
+            ),
+        };
+    });
+
 
 var app = builder.Build();
 
@@ -58,8 +116,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStatusCodePages();
 
-app.UseAuthorization();
+app.UseAuthentication(); // allowing people to log in
+app.UseAuthorization(); // giveing them access
 
 app.MapControllers();
 

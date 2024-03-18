@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EarthlyTeaTalesAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EarthlyTeaTalesAPI.Controllers;
 

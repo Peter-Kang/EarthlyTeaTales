@@ -1,4 +1,4 @@
-﻿namespace EarthlyTeaTalesAPI;
+﻿namespace EarthlyTeaTalesAPI.Models;
 
 public class WeatherForecast
 {

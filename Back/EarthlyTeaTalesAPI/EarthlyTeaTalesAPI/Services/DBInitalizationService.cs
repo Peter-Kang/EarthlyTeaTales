@@ -2,6 +2,11 @@
 {
     public class DBInitalizationService
     {
+        public DBInitalizationService() { }
 
+        public void Setup() 
+        {
+            new DBInitalizationService().Setup();
+        }
     }
 }

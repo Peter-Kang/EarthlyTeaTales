@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Model
 {
-    public class InitalizationDB : SQLDataAccess
+    public class InitializationDB : SQLDataAccess
     {
 
-        public InitalizationDB():base() { }
+        public InitializationDB():base() { }
 
         public void init()
         { // nothing should run before initalization, dont async this
@@ -20,6 +20,7 @@ namespace DataAccessLayer.Model
 
         private void initiateSchema()
         {
+            Console.WriteLine("Initalizing Schema");
             const string user_table_query = "CREATE SCHEMA IF NOT EXISTS EarthlyTeaTales;";
             NpgsqlCommand schema_create_command = new NpgsqlCommand(user_table_query, m_SQLConnection);
             m_SQLConnection.Open();
@@ -29,6 +30,7 @@ namespace DataAccessLayer.Model
 
         private void initUserTable()
         {
+            Console.WriteLine("Initalizing User Table");
             const string user_table_query =
 @"CREATE TABLE IF NOT EXISTS EarthlyTeaTales.USERS (
     UserID varchar(36) PRIMARY KEY,

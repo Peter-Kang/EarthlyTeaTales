@@ -4,7 +4,7 @@ namespace DataAccessLayer
 {
     public class SQLDataAccess
     {
-        private const string  m_CONNECTION_STRING = "";
+        private const string  m_CONNECTION_STRING = "Host=localhost;Database=earthlyteatalesdb;Username=postgres;Password=postgres";
 
         protected NpgsqlConnection m_SQLConnection { get; set; }
 

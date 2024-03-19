@@ -34,6 +34,7 @@ namespace DataAccessLayer.Model
     UserID varchar(36) PRIMARY KEY,
     Email varchar(320) UNIQUE,
     PW varchar(64),
+    Version int DEFAULT 0,
     LastLoginOn TIMESTAMP DEFAULT NULL,
     CreatedOn TIMESTAMP DEFAULT ( TIMEZONE('UTC', NOW()) )
 );";

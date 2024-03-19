@@ -114,6 +114,10 @@ if (isTokenHere)
             };
         });
 }
+else 
+{
+    throw new Exception("No JWT tocken Symmetric Security Key");
+}
 
 var app = builder.Build();
 

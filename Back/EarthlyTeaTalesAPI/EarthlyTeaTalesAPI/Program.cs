@@ -52,6 +52,11 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 // make another project to handle db
 //builder.Services.AddDbContext<ApplicationDbContext>();
 
+{ //DB initalization
+    DBInitalizationService initDB = new DBInitalizationService();
+    initDB.Setup();
+}
+
 // Register our TokenService dependency
 builder.Services.AddScoped<TokenService, TokenService>();
 

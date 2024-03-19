@@ -1,4 +1,6 @@
-﻿namespace EarthlyTeaTalesAPI.Services
+﻿using EarthlyTeaTalesAPI.Repository;
+
+namespace EarthlyTeaTalesAPI.Services
 {
     public class DBInitalizationService
     {
@@ -6,7 +8,7 @@
 
         public void Setup() 
         {
-            new DBInitalizationService().Setup();
+            new DBInitalizationRepository().Init();
         }
     }
 }

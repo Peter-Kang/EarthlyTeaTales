@@ -52,9 +52,15 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 // make another project to handle db
 //builder.Services.AddDbContext<ApplicationDbContext>();
 
+try
 { //DB initalization
     DBInitalizationService initDB = new DBInitalizationService();
     initDB.Setup();
+}
+catch (Exception ex) 
+{
+    Console.WriteLine("DB Set Up Failed");
+    throw ex;
 }
 
 // Register our TokenService dependency
@@ -116,6 +122,7 @@ if (isTokenHere)
 }
 else 
 {
+    Console.log("No JWT tocken Symmetric Security Key");
     throw new Exception("No JWT tocken Symmetric Security Key");
 }
 

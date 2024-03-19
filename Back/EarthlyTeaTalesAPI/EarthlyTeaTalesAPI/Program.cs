@@ -122,7 +122,7 @@ if (isTokenHere)
 }
 else 
 {
-    Console.log("No JWT tocken Symmetric Security Key");
+    Console.WriteLine("No JWT tocken Symmetric Security Key");
     throw new Exception("No JWT tocken Symmetric Security Key");
 }
 

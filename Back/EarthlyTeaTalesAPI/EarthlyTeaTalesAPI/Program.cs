@@ -65,6 +65,7 @@ catch (Exception ex)
 
 // Register our TokenService dependency
 builder.Services.AddScoped<TokenService, TokenService>();
+builder.Services.AddTransient<IUserStore<ApplicationUser>, EarthlyTeaTalesUserRepository>();
 
 // Support string to enum conversions
 builder.Services.AddControllers().AddJsonOptions(opt =>
@@ -84,8 +85,11 @@ builder.Services
         options.Password.RequireNonAlphanumeric = false;
         options.Password.RequireUppercase = false;
     })
+    .AddRoleStore<EarthlyTeaTalesUserRepository>()
     .AddRoles<IdentityRole>()
-    .AddUserStore<EarthlyTeaTalesUserStore>();//Add custom user store
+    .AddUserStore<EarthlyTeaTalesUserRepository>()
+    .AddUserManager<EarthlyTeaTalesUserManager>();
+
 //.AddEntityFrameworkStores<ApplicationDbContext>();
 
 // These will eventually be moved to a secrets file, but for alpha development appsettings is fine

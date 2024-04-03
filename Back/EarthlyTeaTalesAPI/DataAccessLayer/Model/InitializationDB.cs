@@ -37,7 +37,6 @@ namespace DataAccessLayer.Model
     Email varchar(320) UNIQUE,
     PW varchar(64),
     Version int DEFAULT 0,
-    LastLoginOn TIMESTAMP DEFAULT NULL,
     CreatedOn TIMESTAMP DEFAULT ( TIMEZONE('UTC', NOW()) )
 );";
             NpgsqlCommand table_create_command = new NpgsqlCommand(user_table_query, m_SQLConnection);

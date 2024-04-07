@@ -1,0 +1,55 @@
+version: "0"
+
+networks:
+  earth:
+
+services:
+  react:
+    build:
+      context: ./EarthlyTeaTales/ #move to the root of folder struct
+      dockerfile: Dockerfile
+    image: react-earthly-tea-tales-frontend-image
+    container_name: react-earthly-tea-tales-frontend-container
+    volumes:
+      - ./EarthlyTeaTales:/usr/src/app/EarthlyTeaTales
+      - /usr/src/app/EarthlyTeaTales/node_modules
+    ports:
+      - "5173:5173" #for docker to know where to redirect hot module reload queries
+    depends_on:
+      - api-gateway
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - earth
+
+  api-gateway:
+    container_name: api-gateway-container
+    build:
+      context: ./Back/EarthlyTeaTalesAPI/ #move to the root of folder struct
+      dockerfile: ./EarthlyTeaTalesAPI/Dockerfile
+    depends_on:
+      - post-gres-db
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    networks:
+      - earth
+
+  post-gres-db:
+    container_name: post-gres-db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=earthlyteatalesdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - post-gres-db:/var/lib/postgresql/data
+    networks:
+      - earth
+volumes:
+  post-gres-db:
+    driver: local

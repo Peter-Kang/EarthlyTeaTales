@@ -2,6 +2,7 @@
 using EarthlyTeaTalesAPI.Models;
 using EarthlyTeaTalesAPI.Enums;
 using System.Security.Claims;
+using DataAccessLayer.Model;
 
 namespace EarthlyTeaTalesAPI.Repository
 {
@@ -14,9 +15,25 @@ namespace EarthlyTeaTalesAPI.Repository
         IUserSecurityStampStore<ApplicationUser>,
         IUserRoleStore<ApplicationUser>
     {
+
+        private UserData _DAL;
+        public EarthlyTeaTalesUserRepository() 
+        {
+            _DAL = new UserData();
+        }
+        public async Task<bool> isPasswordValid(ApplicationUser user, string pass) 
+        {
+            return await _DAL.AsyncCheckPWandEmail(user.Email!, user.PasswordHash!);
+        }
         public async Task<IdentityResult> CreateAsync(ApplicationUser user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            bool success = await _DAL.AsyncCreateUser(Guid.NewGuid().ToString(), user.Email!, user.PasswordHash!);
+            IdentityResult result = new IdentityResult();
+            if (success) 
+            {
+                return IdentityResult.Success;
+            }
+            return IdentityResult.Failed(); //Make custom error for this?
         }
 
         public async Task<IdentityResult> DeleteAsync(ApplicationUser user, CancellationToken cancellationToken)
@@ -26,7 +43,6 @@ namespace EarthlyTeaTalesAPI.Repository
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         public async Task<ApplicationUser?> FindByIdAsync(string userId, CancellationToken cancellationToken)
@@ -203,5 +219,6 @@ namespace EarthlyTeaTalesAPI.Repository
         {
             throw new NotImplementedException();
         }
+
     }
 }

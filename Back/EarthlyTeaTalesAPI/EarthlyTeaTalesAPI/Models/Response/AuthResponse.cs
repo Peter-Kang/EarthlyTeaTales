@@ -1,4 +1,4 @@
-﻿namespace EarthlyTeaTalesAPI.Models
+﻿namespace EarthlyTeaTalesAPI.Models.Response
 {
     public class AuthResponse
     {

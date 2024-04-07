@@ -16,11 +16,14 @@ docker exec -it post-gres-db psql -U postgres earthlyteatalesdb
 ```
 
 Defaults
-Database Name: (/l and /c db-name)
-earthlyteatalesdb
+Database Name: (\l and \c db-name)
+\c earthlyteatalesdb
 
-Schema: (/dn)
+Schema: (\dn)
 earthlyteatales
 
 Command for tables for schema:
-/dt earthlyteatales
+\dt earthlyteatales.Users
+
+Command for tables:
+\d earthlyteatales.Users

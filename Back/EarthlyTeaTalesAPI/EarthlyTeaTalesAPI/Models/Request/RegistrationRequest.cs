@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using EarthlyTeaTalesAPI.Enums;
 
-namespace EarthlyTeaTalesAPI.Models
+namespace EarthlyTeaTalesAPI.Models.Request
 {
     public class RegistrationRequest
     {
@@ -9,11 +9,6 @@ namespace EarthlyTeaTalesAPI.Models
         public string? Email { get; set; }
 
         [Required]
-        public string? Username { get; set; }
-
-        [Required]
         public string? Password { get; set; }
-
-        public Role Role { get; set; }
     }
 }

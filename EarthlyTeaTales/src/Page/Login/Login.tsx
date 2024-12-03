@@ -41,6 +41,11 @@ const Login: React.FC<LoginProps> = ({ setLoggedIn, setEmail }) => {
     }
 
     // Authentication calls will be made here...
+    if(true)
+    {
+        setLoggedIn(true);
+        setEmail(email);
+    }
   };
 
   return (

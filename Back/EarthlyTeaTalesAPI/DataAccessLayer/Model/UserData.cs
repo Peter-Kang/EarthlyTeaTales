@@ -76,7 +76,7 @@ namespace DataAccessLayer.Model
                 NpgsqlDataReader result = await create_command.ExecuteReaderAsync();
                 returnValue = result.Rows > 0;
             }
-            catch (Exception ex){}
+            catch (Exception ){}
             this.m_SQLConnection.Close();
             return returnValue;
         }
@@ -125,7 +125,7 @@ SELECT count(UserID) FROM rows";
             {
                 result = await update_command.ExecuteScalarAsync();
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             this.m_SQLConnection.Close();
             return result != null && (int)result! > 0;
         }
@@ -159,7 +159,7 @@ SELECT count(UserID) FROM rows";
             {
                 result = await count_command.ExecuteScalarAsync();
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             this.m_SQLConnection.Close();
             return result != null && (bool)result!;
         }

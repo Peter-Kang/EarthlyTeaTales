@@ -57,10 +57,9 @@ try
     DBInitalizationService initDB = new DBInitalizationService();
     initDB.Setup();
 }
-catch (Exception ex) 
+catch (Exception) 
 {
     Console.WriteLine("DB Set Up Failed");
-    throw ex;
 }
 
 // Register our TokenService dependency
@@ -97,9 +96,7 @@ string? validIssuer = builder.Configuration.GetValue<string>("JwtTokenSettings:V
 string? validAudience = builder.Configuration.GetValue<string>("JwtTokenSettings:ValidAudience");
 string? symmetricSecurityKey = builder.Configuration.GetValue<string>("JwtTokenSettings:SymmetricSecurityKey");
 
-bool isTokenHere = !symmetricSecurityKey.IsNullOrEmpty();
-
-if (isTokenHere)
+if (symmetricSecurityKey is not null)
 {
     builder.Services.AddAuthentication(options =>
     {
@@ -119,7 +116,7 @@ if (isTokenHere)
                 ValidIssuer = validIssuer,
                 ValidAudience = validAudience,
                 IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(symmetricSecurityKey)
+                    Encoding.UTF8.GetBytes((string)symmetricSecurityKey)
                 ),
             };
         });

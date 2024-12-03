@@ -10,8 +10,13 @@
 
 /* List Items of navbar */
 .navbar-item {
-  float: left;
   margin: auto;
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 7px 8px;
+  text-decoration: none;
 }
 
 /* List items of navbar logo */

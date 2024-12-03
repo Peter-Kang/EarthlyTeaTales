@@ -12,10 +12,30 @@ namespace DataAccessLayer.Model
 
         public InitializationDB():base() { }
 
-        public void init()
+        public bool init()
         { // nothing should run before initalization, dont async this
-            initiateSchema();
-            initUserTable();
+            if(CheckIfDBIsOk())
+            {
+                try
+                {
+                    initiateSchema();
+                    initUserTable();
+                    return true;
+                }catch{}
+            }
+            return false;
+        }
+
+        private bool CheckIfDBIsOk()
+        {
+            try{
+                m_SQLConnection.Open(); // throws if invalid
+                m_SQLConnection.Close();
+                return true;
+            }catch(Exception ex){
+                Console.WriteLine(ex.Message);
+                return false;
+                }
         }
 
         private void initiateSchema()

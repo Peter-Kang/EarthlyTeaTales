@@ -7,19 +7,19 @@ namespace EarthlyTeaTalesAPI.Repository
     {
         public DBInitalizationRepository() { }
 
-        public void Init() 
+        public bool Init() 
         {
             try
             {
                 Console.WriteLine("Initializing database");
                 InitializationDB init = new InitializationDB();
-                init.init();
+                return init.init();
 
             } catch (Exception ex) 
             {
                 Console.WriteLine(ex.ToString());
-                throw ex;
             }
+            return false;
         }
     }
 }

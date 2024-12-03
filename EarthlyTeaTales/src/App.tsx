@@ -36,9 +36,8 @@ function App() {
               path="/login"
               element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
             />
-            
             <Route path="/registration" element={<Registration setLoggedIn={setLoggedIn} setEmail={setEmail}/>} />
-
+            <Route path="/tea" element={<TeaLoadOut/>}/>
           </Routes>
         </BrowserRouter>
       </div>

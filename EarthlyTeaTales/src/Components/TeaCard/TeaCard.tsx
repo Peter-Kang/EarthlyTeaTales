@@ -1,12 +1,8 @@
+import './TeaCard.css';
 const TeaCard = ()=>{
     return (
         <div>
-            <input  className={"inputButton"}
-                type="button"
-                //onClick={onButtonClick}
-                value={"Add A Tea"}>
-            </input>
-
+            tea Card
         </div>
     )
 }

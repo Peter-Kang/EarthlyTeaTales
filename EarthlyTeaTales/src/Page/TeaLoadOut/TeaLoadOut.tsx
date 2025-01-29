@@ -1,14 +1,12 @@
 //import TeaCard from "../../Components/TeaCard/TeaCard.tsx"; <TeaCard></TeaCard>
-import {Button, Cell, Column, Row, Table, TableBody, TableHeader} from 'react-aria-components';
+import {Button} from 'react-aria-components';
+import TeaRow from "./component/TeaRow";
 
 import "./TeaLoadOut.css"
 
 const TeaLoadOut = () => 
 {
-    const rowStyle = {
-        alignSelf: "center",
-        marginInline: "auto"
-    };
+    
     const rowContainerStyle = {
         display: "grid",
         gridTemplateRows:  "auto",
@@ -26,16 +24,7 @@ const TeaLoadOut = () =>
             <Button type="button" onPress={() => console.log('Clicked')}>Add A New Tea</Button>
         </div>
         <div style={rowContainerStyle}>
-            <div style={rowStyle}>
-                    <img width="150px" src="https://happyearthtea.com/cdn/shop/files/IMG_3131_374x374.jpg?v=1711121609"></img>
-                    <div>
-                        <label><b>Da Hong Pao - Red Robe - Pressed</b></label>
-                        <div>
-                            <label><b>Rating:</b>3/5</label>
-                        </div>
-                    </div>
-                    <Button type='submit'>Edit</Button>
-            </div> {/* Row */}
+           <TeaRow></TeaRow>
         </div>{/* Row holder */}
     {/* page component */}</div>);
 }

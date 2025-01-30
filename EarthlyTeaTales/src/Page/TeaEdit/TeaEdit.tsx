@@ -7,6 +7,8 @@ const TeaEdit = ()=>{
             <div>
                  {/* Image url*/}
                 <label>Image</label>
+                <image></image>
+                <input type="file"></input>
             </div>
             <div>
                 {/* Name 20 chars*/}
@@ -50,7 +52,7 @@ const TeaEdit = ()=>{
                 {/* Up to 7 repeats
                 Steep # and temperature in F (repeat up to 20th)
                 Review*/}
-                
+
             </div>
         </div>
     )

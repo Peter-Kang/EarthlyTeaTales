@@ -24,6 +24,11 @@ const Navbar = () => {
           <u>Teas</u>
         </a>
       </li>
+      <li className="navbar-item">
+        <a className="navbar-logo" href="/edit">
+          <u>Tea Edit</u>
+        </a>
+      </li>
     </ul>
   );
 };

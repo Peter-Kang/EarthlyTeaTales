@@ -1,6 +1,6 @@
 //import TeaCard from "../../Components/TeaCard/TeaCard.tsx"; <TeaCard></TeaCard>
 import {Button} from 'react-aria-components';
-import TeaRow from "./component/TeaRow";
+import TeaRow from "./components/TeaRow";
 
 import "./TeaLoadOut.css"
 

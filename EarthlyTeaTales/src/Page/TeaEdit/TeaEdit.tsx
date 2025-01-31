@@ -58,6 +58,10 @@ const TeaEdit = ()=>{
                         <textarea> </textarea>
                     </div>
                     <div>
+                        <div>
+                            <label>Wash</label>
+                            <input type="checkbox" checked></input>
+                        </div>
                         <div> {/*Steep 1*/}
                             <label>Steep 1</label>
                             <div>
@@ -122,10 +126,14 @@ const TeaEdit = ()=>{
                         <input type="text" maxLength={64} value="Western"></input>
                     </div>
                     <div>
-                        <label>Description:</label>
+                        <label>Description</label>
                         <textarea> </textarea>
                     </div>
                     <div>
+                        <div>
+                            <label>Wash</label>
+                            <input type="checkbox"></input>
+                        </div>
                         <div> {/*Steep 1*/}
                             <label>Steep 1</label>
                             <div>

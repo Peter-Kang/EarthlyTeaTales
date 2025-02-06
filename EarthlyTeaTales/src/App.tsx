@@ -10,7 +10,7 @@ import Registration from "./Page/Registration/Registration.tsx";
 import TeaEdit from "./Page/TeaEdit/TeaEdit.tsx";
 
 //Hooks
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -46,5 +46,4 @@ function App() {
     </main>
   );
 }
-
 export default App;

@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Navbar from "./Navbar/Navbar.tsx";
+import TeaLoadOut from "./Page/TeaLoadOut/TeaLoadOut.tsx";
+//Routes
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+//Pages
+import Home from "./Page/Home/Home.tsx";
+import Login from "./Page/Login/Login.tsx";
+import Registration from "./Page/Registration/Registration.tsx";
+import TeaEdit from "./Page/TeaEdit/TeaEdit.tsx";
+
+//Hooks
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main>
+      <header>
+        <Navbar></Navbar>
+      </header>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  email={email}
+                  isLoggedIn={loggedIn}
+                  setLoggedIn={setLoggedIn}
+                />
+              }
+            />
+            <Route
+              path="/login"
+              element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />}
+            />
+            <Route path="/registration" element={<Registration setLoggedIn={setLoggedIn} setEmail={setEmail}/>} />
+            <Route path="/tea" element={<TeaLoadOut/>}/>
+            <Route path="/edit" element={<TeaEdit/>}/>
+          </Routes>
+        </BrowserRouter>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </main>
+  );
 }
-
-export default App
+export default App;

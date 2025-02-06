@@ -33,13 +33,13 @@ services:
 
   react:
     build:
-      context: ./EarthlyTeaTales/ #move to the root of folder struct
+      context: ./ReactFrontEnd/ #move to the root of folder struct
       dockerfile: Dockerfile
     image: react-earthly-tea-tales-frontend-image
     container_name: react-earthly-tea-tales-frontend-container
     volumes:
-      - ./EarthlyTeaTales:/usr/src/app/EarthlyTeaTales
-      - /usr/src/app/EarthlyTeaTales/node_modules
+      - ./ReactFrontEnd:/usr/src/app/ReactFrontEnd
+      - /usr/src/app/ReactFrontEnd/node_modules
     ports:
       - "5173:5173" #for docker to know where to redirect hot module reload queries
     depends_on:

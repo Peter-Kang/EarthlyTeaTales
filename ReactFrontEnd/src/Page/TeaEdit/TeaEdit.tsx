@@ -7,9 +7,11 @@ import TeaEditSteeps from './components/TeaEditSteeps/TeaEditSteeps';
 import TeaEditTags from './components/TeaEditTags/TeaEditTags';
 
 const TeaEdit = ()=>{
-   
+   const TeaEditStyle = {
+    textAlign: "center" as "center"
+   }
     return (
-        <div>
+        <div style={TeaEditStyle}>
             <TeaEditImage></TeaEditImage>
             <TeaEditName></TeaEditName>
             <TeaEditRating></TeaEditRating>

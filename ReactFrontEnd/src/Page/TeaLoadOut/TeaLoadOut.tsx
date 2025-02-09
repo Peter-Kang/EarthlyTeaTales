@@ -1,11 +1,9 @@
-//import TeaCard from "../../Components/TeaCard/TeaCard.tsx"; <TeaCard></TeaCard>
 import TeaRow from "./components/TeaRow";
-
 import "./TeaLoadOut.css"
+
 
 const TeaLoadOut = () => 
 {
-    
     const rowContainerStyle = {
         display: "grid",
         gridTemplateRows:  "auto",

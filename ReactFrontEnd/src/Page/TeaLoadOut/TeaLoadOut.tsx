@@ -1,4 +1,5 @@
 import TeaRow from "./components/TeaRow";
+import TeaTagEdit from "./components/TeaTagEdit";
 import "./TeaLoadOut.css"
 
 
@@ -17,6 +18,8 @@ const TeaLoadOut = () =>
     return (
     <div style={{
         textAlign: "center"}}>
+        <TeaTagEdit></TeaTagEdit>
+        <h2>Teas</h2>
         <div style={{textAlign:"center"}}>
             <button type="button">Add A New Tea</button>
         </div>

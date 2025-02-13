@@ -8,12 +8,14 @@ import TeaEditTags from './components/TeaEditTags/TeaEditTags';
 
 const TeaEdit = ()=>{
    const TeaEditStyle = {
-    textAlign: "center" as "center"
+    textAlign: "center" as "center",
+    justifyContent: "space-evenly",
+    display: "flexbox"
    }
     return (
         <div style={TeaEditStyle}>
-            <TeaEditImage></TeaEditImage>
             <TeaEditName></TeaEditName>
+            <TeaEditImage></TeaEditImage>
             <TeaEditRating></TeaEditRating>
             <TeaEditTags></TeaEditTags>
             <TeaEditDescription></TeaEditDescription>

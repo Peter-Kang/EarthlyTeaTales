@@ -25,6 +25,8 @@ const TeaLoadOut = () =>
         </div>
         <div style={rowContainerStyle}>
            <TeaRow></TeaRow>
+           <TeaRow></TeaRow>
+           <TeaRow></TeaRow>
         </div>{/* Row holder */}
     {/* page component */}</div>);
 }

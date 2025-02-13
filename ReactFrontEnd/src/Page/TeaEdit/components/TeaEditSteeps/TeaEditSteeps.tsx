@@ -4,7 +4,9 @@ const TeaEditSteeps = ()=>{
     return (<div>{/* Steeping notes Up to 7 repeats
         Steep # and temperature in F (repeat up to 20th)
         Review*/}
-        <div> {/* Gong Fu*/}
+        <button>New Steep</button>
+        <details style={{listStyleType: '+'}}> {/* Gong Fu*/}
+            <summary>Gong Fu</summary>
             <div>
                 <label>Name: </label>
                 <input type="text" maxLength={64} value="GongFu"></input>
@@ -74,9 +76,12 @@ const TeaEditSteeps = ()=>{
                     </div>
                 </div>
             </div>
-        </div>
+        </details>
 
-        <div> {/* Western */}
+        <details> {/* Western */}
+            <summary>
+                Western
+            </summary>
             <div>
                 <label>Name:</label>
                 <input type="text" maxLength={64} value="Western"></input>
@@ -102,7 +107,7 @@ const TeaEditSteeps = ()=>{
                     </div>
                 </div>
             </div>
-        </div>
+        </details>
     </div>)
 }
 

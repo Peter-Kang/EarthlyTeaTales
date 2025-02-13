@@ -12,7 +12,7 @@ const TeaEditTags = ()=>{
                     <option>Gong fu</option>
                     <option>Western</option>
                 </select>
-                <button>Add Another Tag</button>
+                <button>+</button>
             </div>)};
 
 export default TeaEditTags;

@@ -21,8 +21,10 @@ export const useTags = () => {
     };
 
     //Delete a tag
-    const deleteTag:()=>Promise<void>   = async ()=>{
-
+    const deleteTag:(removeTagName:string)=>Promise<void>= async (removeTagName:string)=>{
+        let newSet = new Set(tags)
+        newSet.delete(removeTagName);
+        setTags(newSet);
     };
 
     return { tags,createTag, deleteTag};

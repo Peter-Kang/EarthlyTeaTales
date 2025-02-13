@@ -1,5 +1,8 @@
+import { useState } from "react";
+import { useTags } from "../../../Hooks/useTeaTags";
 
 const TeaTagEdit = () => {
+    
     const tagLabelCSS = {
         height: "55px",
         width: "100%",
@@ -18,34 +21,22 @@ const TeaTagEdit = () => {
         padding:"7px",
         
     };
+    const {tags, createTag , deleteTag } = useTags();
+    const [newTagName, setNewTagName] = useState("");
     return (
     <div>
         <h2>Tea Tags</h2>
         <div>
-            <input type="text" maxLength={20} style={{width:"150px"}}></input>
-            <button>Add Tag</button>
+            <input type="text" maxLength={20} value={newTagName} onChange={(e)=>setNewTagName(e.target.value)} style={{width:"150px"}}/>
+            <button onClick={()=>createTag(newTagName)}>Add Tag</button>
         </div>
         <div style={tagContainerStyle}>
-            <label style={tagLabelCSS}>
-                green
+            {
+            Array.from(tags).map(item => (
+            <label key={item} style={tagLabelCSS}>
+                {item}
                 <span style={closeIcon}>&times;</span>
-            </label>
-            <label style={tagLabelCSS}>
-                black
-                <span style={closeIcon}>&times;</span>
-            </label>
-            <label style={tagLabelCSS}>
-                Oolong
-                <span style={closeIcon}>&times;</span>
-            </label>
-            <label style={tagLabelCSS}>
-                Puer
-                <span style={closeIcon}>&times;</span>
-            </label>
-            <label style={tagLabelCSS}>
-                herbal
-                <span style={closeIcon}>&times;</span>
-            </label>
+            </label>))}
         </div>
     </div>)
 }

@@ -35,7 +35,7 @@ const TeaTagEdit = () => {
             Array.from(tags).map(item => (
             <label key={item} style={tagLabelCSS}>
                 {item}
-                <span style={closeIcon}>&times;</span>
+                <span style={closeIcon} onClick={()=>deleteTag(item)}>&times;</span>
             </label>))}
         </div>
     </div>)

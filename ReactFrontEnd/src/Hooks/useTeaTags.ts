@@ -9,7 +9,7 @@ const deleteTagAPICall = async () => {}
 
 
 export const useTags = () => {
-    const [tags, setTags ]= useState<Set<string>>(new Set());
+    const [tags, setTags ]= useState<Set<string>>(new Set(["Green","Black","Oolong"]));
 
     //Get all tags at the start of the call
     const getAllTagAPICall = async () => {};

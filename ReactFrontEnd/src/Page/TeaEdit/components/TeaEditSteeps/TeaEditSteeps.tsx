@@ -1,11 +1,12 @@
 
 
 const TeaEditSteeps = ()=>{
-    return (<div>{/* Steeping notes Up to 7 repeats
+    return (<div className="mainDetails">{/* Steeping notes Up to 7 repeats
         Steep # and temperature in F (repeat up to 20th)
         Review*/}
+        <h3>Steeps</h3>
         <button>New Steep</button>
-        <details style={{listStyleType: '+'}}> {/* Gong Fu*/}
+        <details className="mainDetails"> {/* Gong Fu*/}
             <summary>Gong Fu</summary>
             <div>
                 <label>Name: </label>
@@ -78,7 +79,7 @@ const TeaEditSteeps = ()=>{
             </div>
         </details>
 
-        <details> {/* Western */}
+        <details className="mainDetails"> {/* Western */}
             <summary>
                 Western
             </summary>

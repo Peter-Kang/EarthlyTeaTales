@@ -1,0 +1,8 @@
+.mainDetails {
+    align-items: center;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid #37a715dc;
+    font-size: 16px;
+  }

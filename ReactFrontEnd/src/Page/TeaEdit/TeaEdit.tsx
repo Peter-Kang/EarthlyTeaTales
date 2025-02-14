@@ -14,11 +14,15 @@ const TeaEdit = ()=>{
    }
     return (
         <div style={TeaEditStyle}>
-            <TeaEditName></TeaEditName>
-            <TeaEditImage></TeaEditImage>
-            <TeaEditRating></TeaEditRating>
-            <TeaEditTags></TeaEditTags>
-            <TeaEditDescription></TeaEditDescription>
+            <div className={"mainDetails"}>
+                <TeaEditName></TeaEditName>
+                <TeaEditImage></TeaEditImage>
+                <div className='mainDetails'>
+                    <TeaEditRating></TeaEditRating>
+                    <TeaEditTags></TeaEditTags>
+                    <TeaEditDescription></TeaEditDescription>
+                </div>
+            </div>
             <TeaEditSteeps></TeaEditSteeps>
         </div>
     )

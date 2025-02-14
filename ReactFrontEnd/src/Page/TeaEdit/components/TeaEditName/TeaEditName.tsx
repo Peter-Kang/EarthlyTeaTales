@@ -1,7 +1,7 @@
 const TeaEditName = ()=>{
     return ( <div> {/* Name 20 chars*/}
-        <label>Name:</label>
-        <input type="text" maxLength={20}></input>
+        <h3>Da hong pao</h3>
+        <input type="text" maxLength={20} value="Da hong pao"></input>
     </div>)
     };
 export default TeaEditName;

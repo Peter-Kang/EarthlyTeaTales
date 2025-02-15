@@ -15,15 +15,15 @@ const TeaEdit = ()=>{
     return (
         <div style={TeaEditStyle}>
             <div className={"mainDetails"} style={{display:"inline-block"}}>
-                <div className='mainDetails' style={{float:"left"}}>
+                <div className='mainDetails' style={{float:"left", margin:"5px", padding:"15px"}}>
                     <TeaEditImage></TeaEditImage>
                 </div>
-                <div className='mainDetails' style={{float:"right"}}>
+                <div className='mainDetails' style={{float:"right", margin:"5px", padding:"15px"}}>
                     <TeaEditName></TeaEditName>
-                        <TeaEditRating></TeaEditRating>
-                        <TeaEditTags></TeaEditTags>
-                        <TeaEditDescription></TeaEditDescription>
-                    </div>
+                    <TeaEditRating></TeaEditRating>
+                    <TeaEditTags></TeaEditTags>
+                    <TeaEditDescription></TeaEditDescription>
+                </div>
             </div>
             <TeaEditSteeps></TeaEditSteeps>
         </div>

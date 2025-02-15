@@ -14,14 +14,16 @@ const TeaEdit = ()=>{
    }
     return (
         <div style={TeaEditStyle}>
-            <div className={"mainDetails"}>
-                <TeaEditName></TeaEditName>
-                <TeaEditImage></TeaEditImage>
-                <div className='mainDetails'>
-                    <TeaEditRating></TeaEditRating>
-                    <TeaEditTags></TeaEditTags>
-                    <TeaEditDescription></TeaEditDescription>
+            <div className={"mainDetails"} style={{display:"inline-block"}}>
+                <div className='mainDetails' style={{float:"left"}}>
+                    <TeaEditImage></TeaEditImage>
                 </div>
+                <div className='mainDetails' style={{float:"right"}}>
+                    <TeaEditName></TeaEditName>
+                        <TeaEditRating></TeaEditRating>
+                        <TeaEditTags></TeaEditTags>
+                        <TeaEditDescription></TeaEditDescription>
+                    </div>
             </div>
             <TeaEditSteeps></TeaEditSteeps>
         </div>

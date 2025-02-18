@@ -7,8 +7,8 @@ const TeaEditSteeps = () => {
         Review*/}
         <h3>Steeps</h3>
         <button onClick={() => createTeaSteepInstructions()}>New Set</button>
-        {currentSteepInstructions.map(currentSteepInstruction => (
-            <details className="mainDetails" key={currentSteepInstruction.guid}> {/* Gong Fu*/}
+        {currentSteepInstructions.map((currentSteepInstruction, index) => (
+            <details className="mainDetails" key={index}> {/* Gong Fu*/}
                 <summary>{currentSteepInstruction.name}</summary>
                 <div>
                     <label>Name: </label>

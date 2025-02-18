@@ -1,86 +1,52 @@
+import { useTeaSteep } from "../../../../Hooks/useTeaSteeps.ts"
 
-
-const TeaEditSteeps = ()=>{
+const TeaEditSteeps = () => {
+    const { currentSteepInstructions, createTeaSteepInstructions } = useTeaSteep();
     return (<div className="mainDetails">{/* Steeping notes Up to 7 repeats
         Steep # and temperature in F (repeat up to 20th)
         Review*/}
         <h3>Steeps</h3>
-        <button>New Set</button>
-        <details className="mainDetails"> {/* Gong Fu*/}
-            <summary>Gong Fu</summary>
-            <div>
-                <label>Name: </label>
-                <input type="text" maxLength={64} value="GongFu"></input>
-            </div>
-            <div>
-                <label>Description</label>
-                <textarea> </textarea>
-            </div>
-            <div>
+        <button onClick={() => createTeaSteepInstructions()}>New Set</button>
+        {currentSteepInstructions.map(currentSteepInstruction => (
+            <details className="mainDetails" key={currentSteepInstruction.guid}> {/* Gong Fu*/}
+                <summary>{currentSteepInstruction.name}</summary>
                 <div>
-                    <label>Wash</label>
-                    <input type="checkbox" checked></input>
+                    <label>Name: </label>
+                    <input type="text" maxLength={64} value={currentSteepInstruction.name}></input>
                 </div>
-                <div> {/*Steep 1*/}
-                    <div>
-                        <button>Add Steep</button>
-                    </div>
-                    <label>Steep 1</label>
-                    <div>
-                        <label>Temperature</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>F
-                    </div>
-                    <div>
-                        <label>Time</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}} ></input>seconds 
-                    </div>
+                <div>
+                    <label>Description</label>
+                    <input type="text" maxLength={256} value={currentSteepInstruction.description}></input>
                 </div>
-                <div> {/*Steep 2*/}
-                    <label>Steep 2</label>
+                <div>
                     <div>
-                        <label>Temperature</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>F
+                        <label>Wash</label>
+                        <input type="checkbox" checked={currentSteepInstruction.washed}></input>
                     </div>
                     <div>
-                        <label>Time</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>seconds 
-                    </div>
-                </div>
-                <div> {/*Steep 3*/}
-                    <label>Steep 3</label>
-                    <div>
-                        <label>Temperature</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>F
-                    </div>
-                    <div>
-                        <label>Time</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>seconds 
+                        <div>
+                            <button>Add Steep</button>
+                        </div>
+                        {
+                            currentSteepInstruction.steeps.map(currentSteep => (
+                                <div>
+                                    <label>Steep</label>
+                                    <div>
+                                        <label>Temperature</label>
+                                        <input type="text" maxLength={3} style={{ width: "3ch" }} value={currentSteep.temperature}></input>F
+                                    </div>
+                                    <div>
+                                        <label>Time</label>
+                                        <input type="text" maxLength={3} style={{ width: "3ch" }} value={currentSteep.timeInSeconds}></input>seconds
+                                    </div>
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
-                <div> {/*Steep 4*/}
-                    <label>Steep 4</label>
-                    <div>
-                        <label>Temperature</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>F
-                    </div>
-                    <div>
-                        <label>Time</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>seconds 
-                    </div>
-                </div>
-                <div> {/*Steep 5*/}
-                    <label>Steep 5</label>
-                    <div>
-                        <label>Temperature</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>F
-                    </div>
-                    <div>
-                        <label>Time</label>
-                        <input type="text" maxLength={3} style={{width:"3ch"}}></input>seconds 
-                    </div>
-                </div>
-            </div>
-        </details>
+            </details>
+        ))}
+
     </div>)
 }
 

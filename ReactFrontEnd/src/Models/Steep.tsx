@@ -1,18 +1,18 @@
-export const TimeTime = {
-    Seconds:"Seconds",
-    Minutes:"Minutes",
-    Hours:"Hours"
-}
 
-export const TemperatureType =
-{ 
-    Celsius:'C', 
-    Fahrenheit:'F'
-};
 
 export class Steep{
+    static TemperatureType =
+    { 
+        Celsius:'C', 
+        Fahrenheit:'F'
+    };
+    static TimeTime = {
+        Seconds:"Seconds",
+        Minutes:"Minutes",
+        Hours:"Hours"
+    }
     timeInSeconds:number = 0;
     temperature:number = 0;
-    temperatureType:String = TemperatureType.Fahrenheit;
-    timeType:String = TimeTime.Seconds;
+    temperatureType:String = Steep.TemperatureType.Fahrenheit;
+    timeType:String = Steep.TimeTime.Seconds;
 }

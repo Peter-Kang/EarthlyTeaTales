@@ -6,6 +6,14 @@ export interface RegistrationProps {
   setEmail: React.Dispatch<React.SetStateAction<string>>;
 }
 
+import {
+  browserSupportsWebAuthn
+} from '@simplewebauthn/browser';
+
+const isWebAuthnSupported = async () => {
+  return await browserSupportsWebAuthn();
+};
+
 const Registration: React.FC<RegistrationProps> = ({ setLoggedIn, setEmail }) => {
 
   const [email, setRegistrationEmail] = useState("");
@@ -17,40 +25,43 @@ const Registration: React.FC<RegistrationProps> = ({ setLoggedIn, setEmail }) =>
 
   const navigate = useNavigate();
 
-  const onButtonClick = () => {
-    // Set initial error values to empty
-    setEmailError("");
-    setPasswordError("");
-    setRepasswordError("");
-
-    // Check if the user has entered both fields correctly
-    if ("" === email) {
-      setEmailError("Please enter your email");
-      return;
-    }
-
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError("Please enter a valid email");
-      return;
-    }
-
-    if ("" === password) {
-      setPasswordError("Please enter a password");
-      return;
-    }
-
-    if (password.length < 7) {
-      setPasswordError("The password must be 8 characters or longer");
-      return;
-    }
-
-    if(password !== repassword){
+  const onButtonClick = async () => {
+    /*
+      // Set initial error values to empty
+      setEmailError("");
+      setPasswordError("");
+      setRepasswordError("");
+  
+      // Check if the user has entered both fields correctly
+      if ("" === email) {
+        setEmailError("Please enter your email");
+        return;
+      }
+  
+      if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+        setEmailError("Please enter a valid email");
+        return;
+      }
+  
+      if ("" === password) {
+        setPasswordError("Please enter a password");
+        return;
+      }
+  
+      if (password.length < 7) {
+        setPasswordError("The password must be 8 characters or longer");
+        return;
+      }
+  
+      if (password !== repassword) {
         setRepasswordError("The passwords do not match");
-    }
-
+      }
+  */
     // Authentication calls will be made here...
+    fetch('http://localhost:8000/generate-registration-options', { mode: 'cors' }).then(response => response.json())
+      .then(data => console.log(data))
   };
-
+  isWebAuthnSupported().then(res => console.log(res));
   return (
     <div className={"mainContainer"}>
       <div className={"titleContainer"}>
@@ -93,11 +104,11 @@ const Registration: React.FC<RegistrationProps> = ({ setLoggedIn, setEmail }) =>
         <input
           className={"inputButton"}
           type="button"
-          onClick={onButtonClick}
+          onClick={() => onButtonClick()}
           value={"Create Account"}
-        />
+        ></input>
       </div>
-    </div>
+    </div >
   );
 };
 
